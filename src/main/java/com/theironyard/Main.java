@@ -1,5 +1,10 @@
 package com.theironyard;
 
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.MonthDay;
+import java.time.format.DateTimeFormatter;
+
 /**
  * For this exercise you will be creating a new class, SignificantDate, that can
  * be used to calculate the days until a given date (such as Valentine's Day,
@@ -12,7 +17,7 @@ package com.theironyard;
 public class Main {
 
     public static void main(String[] args) {
-
+        MonthDay BIRTHDAY = MonthDay.of(Month.JUNE, 7);
         /*
             In this main() method you should make use of your SignificantDate
             class. Use the next() method to find and print the next instance of
@@ -53,6 +58,27 @@ public class Main {
          */
 
         // todo: create a new DateTimeFormatter in a variable named formatter
+        DateTimeFormatter Formatter = DateTimeFormatter.ofPattern("M/d/uuuu");
+
+
+
+        System.out.printf("There are %s days until the next occurrence of %s on %s\n",
+                SignificantDate.daysTo(SignificantDate.VALENTINES_DAY),
+                "Valentines Day",
+                SignificantDate.next(SignificantDate.VALENTINES_DAY).format(Formatter));
+
+
+        System.out.printf("There are %s days until the next occurrence of %s on %s\n",
+                SignificantDate.daysTo(SignificantDate.LEAP_YEAR),
+                "Leap Year",
+                SignificantDate.next(SignificantDate.LEAP_YEAR).format(Formatter));
+
+
+        System.out.printf("There are %s days until the next occurrence of my %s on %s\n",
+                SignificantDate.daysTo(BIRTHDAY),
+                "birthday",
+                SignificantDate.next(BIRTHDAY).format(Formatter));
+
 
 
         // todo: print the number of days to and the date of the next occurrence of a constant date defined in SignificantDate (other than leap year). EG: Valentines Day
@@ -60,9 +86,7 @@ public class Main {
 
         // todo: print the number of days to and date of the next occurrence of leap year
 
-
         // todo: print the number of days to and date of any arbitrary MonthDate that is not defined as a constant in SignificantDate. EG: your birthday
-
 
     }
 
